@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Hojui builtin string",
+  "type": "object",
+  "required": ["type"],
+  "properties": {
+    "type": {
+      "const": "react-jsonschema-form"
+    },
+    "jsonSchema": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "uiSchema": {
+      "type": "object",
+      "additionalProperties": true
+    }
+  }
+}
