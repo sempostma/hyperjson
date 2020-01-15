@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { register, registredComponents } from '../../component-registry';
 import schema from '../../schemas/hojui-builtin-object.schema.json'
+import { UnknownhojsonuiKey } from '../../errors';
 
 type KeyValuePairs = { [key: string]: any }
 type Item = {
@@ -16,6 +17,11 @@ const DefaultObjectInput: React.FC<{ children: undefined, value: KeyValuePairs, 
   = ({ value, setValue, descriptor }) => {
     const items = descriptor.items.map(({ name, child, key }) => {
       const TextComponent = registredComponents.text.component
+
+      if (!(child.type in registredComponents)) {
+        throw new UnknownhojsonuiKey(`Unknown json ui key "${child.type}"`)
+      }
+
       const { component: Component } = registredComponents[child.type]
       const childValue = value[key]
 

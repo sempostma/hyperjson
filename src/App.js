@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Hojui from './lib/components/Hojui'
 
-import './lib/components/optins/OptinJsonSchema'
+// import './lib/components/optins/OptinJsonSchema'
 
 const descriptor = {
   type: "object",
@@ -33,27 +33,37 @@ const descriptor = {
       }
     },
     {
-      name: "React json schema form",
-      key: "treeComplex",
+      name: "List",
+      key: "list",
       child: {
-        type: "react-jsonschema-form",
-        jsonSchema: {
-          title: "Todo",
-          type: "object",
-          required: ["title"],
-          properties: {
-            title: {type: "string", title: "Title", default: "A new task"},
-            done: {type: "boolean", title: "Done?", default: false}
-          }
+        type: "list",
+        items: {
+          type: "string"
         }
       }
-    }
+    },
+    // {
+    //   name: "React json schema form",
+    //   key: "treeComplex",
+    //   child: {
+    //     type: "react-jsonschema-form",
+    //     jsonSchema: {
+    //       title: "Todo",
+    //       type: "object",
+    //       required: ["title"],
+    //       properties: {
+    //         title: {type: "string", title: "Title", default: "A new task"},
+    //         done: {type: "boolean", title: "Done?", default: false}
+    //       }
+    //     }
+    //   }
+    // }
   ]
 }
 
 function App() {
 
-  const [value, setValue] = useState({ isMan: false, isChild: true, tree: { key: 'value' } })
+  const [value, setValue] = useState({ isMan: false, isChild: true, tree: { key: 'value' }, list: [] })
 
   return (
     <div className="App">

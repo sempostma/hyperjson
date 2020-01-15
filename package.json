@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "module": "dist/index.js",
   "files": [
     "dist",
@@ -18,16 +19,18 @@
     "@types/react": "^16.9.17",
     "@types/react-dom": "^16.9.4",
     "@types/react-jsonschema-form": "^1.6.8",
+    "array-move": "^2.2.1",
     "lodash": "^4.17.15",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-jsonschema-form": "^1.8.1",
     "react-scripts": "3.3.0",
+    "react-sortable-hoc": "^1.10.1",
     "typescript": "^3.7.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
+    "build": "rm -rf dist && cross-env NODE_ENV=production tsc --project ./tsconfig.prod.json",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -47,6 +50,6 @@
     ]
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0"
+    "cross-env": "^6.0.3"
   }
 }
